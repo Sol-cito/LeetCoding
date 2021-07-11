@@ -1,3 +1,4 @@
+[Discussion Post (created on 11/6/2021 at 19:54)](https://leetcode.com/problems/find-median-from-data-stream/discuss/1330971/Python-Simple-binary-search-and-insert-solution)  
 <h2>295. Find Median from Data Stream</h2><h3>Hard</h3><hr><div><p>The <strong>median</strong> is the middle value in an ordered integer list. If the size of the list is even, there is no middle value and the median is the mean of the two middle values.</p>
 
 <ul>
