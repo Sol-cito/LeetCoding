@@ -5,8 +5,6 @@ class Solution:
             if r not in S:
                 ans.append(res.copy())
                 S.add(r)
-            if startIdx == len(nums):
-                return
             for i in range(startIdx, len(nums)):
                 res.append(nums[i])
                 recursion(i + 1, nums, res, S, ans)
