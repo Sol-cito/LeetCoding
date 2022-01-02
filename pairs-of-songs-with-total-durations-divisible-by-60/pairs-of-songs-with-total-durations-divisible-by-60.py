@@ -1,19 +1,16 @@
 class Solution:
     def numPairsDivisibleBy60(self, time: List[int]) -> int:
         dic = {}
-        for i in range(len(time)):
-            if time[i] not in dic.keys():
-                dic[time[i]] = [i]
+        for t in time:
+            if t not in dic.keys():
+                dic[t] = 1
             else:
-                dic.get(time[i]).append(i)
+                dic[t] = dic.get(t) + 1
         ans = 0
-        for i in range(len(time)):
-            r = 60 - time[i] % 60
-            while r <= 540:
-                cnt = 0
-                if r in dic.keys():
-                    for ele in dic.get(r):
-                        if ele > i: cnt += 1
-                ans += cnt
+        for key in dic.keys():
+            if (key * 2) % 60 == 0: ans += (dic.get(key) * (dic.get(key) - 1)) // 2
+            r = 60 - key % 60
+            while r <= 500:
+                if r in dic.keys() and r > key: ans += dic.get(key) * dic.get(r)
                 r += 60
         return ans
