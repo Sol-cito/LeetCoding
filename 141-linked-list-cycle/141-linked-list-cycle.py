@@ -1,8 +1,7 @@
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        cur = head
-        while cur:
-            if cur.val == -10**7:return True
-            cur.val = -10**7
-            cur = cur.next
+        while head:
+            if head.val == -10**7:return True
+            head.val = -10**7
+            head = head.next
         return False
