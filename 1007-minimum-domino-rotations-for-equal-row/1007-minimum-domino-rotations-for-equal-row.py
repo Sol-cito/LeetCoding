@@ -1,20 +1,18 @@
 class Solution:
     def minDominoRotations(self, tops: List[int], bottoms: List[int]) -> int:
-        def helper(l1, l2):
-            a = len(l1) + 1
-            for num in range(1, 7):
-                res = 0
-                for i in range(len(l1)):
-                    if l1[i] != num and l2[i] != num:
-                        res = len(l1) + 1
-                        break
-                    if l1[i] != num and l2[i] == num:
-                        res +=1
-                a = min(a, res)
-            if a == len(l1) + 1:return -1
-            return a
-        
-        a1, a2 = helper(tops, bottoms), helper(bottoms, tops)
-        if a1 == a2 == -1:return -1
-        return min(a1, a2)
-                
+        res1 = res2 = len(tops) + 1
+        for num in range(1, 7):
+            cnt1, cnt2 = 0, 0
+            for i in range(len(tops)):
+                if cnt1 == cnt2 == len(tops) + 1:break
+                if tops[i] != num and bottoms[i] == num and cnt1 != len(tops) + 1:
+                    cnt1 +=1
+                elif tops[i] != num and bottoms[i] != num:
+                    cnt1 = len(tops) + 1
+                if bottoms[i] != num and tops[i] == num and cnt2 != len(tops) + 1:
+                    cnt2 +=1
+                elif bottoms[i] != num and tops[i] != num:
+                    cnt2 = len(tops) + 1
+            res1, res2 = min(res1, cnt1), min(res2, cnt2)
+        if res1 == res2 == len(tops) + 1:return -1
+        return min(res1, res2)
