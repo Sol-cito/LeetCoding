@@ -11,7 +11,7 @@ class Solution:
                     if (x == 3 and y == 0) or (x == 3 and y == 2): continue
                     for dx, dy in movements:
                         nx, ny = x + dx, y + dy
-                        if 0 <= nx <= 3 and 0 <= ny <= 2 and not ((nx == 3 and ny == 0) or (nx == 3 and ny == 2)):
+                        if 0 <= nx <= 3 and 0 <= ny <= 2:
                             nDials[x][y] += dials[nx][ny]
             dials = nDials
         ans = 0
